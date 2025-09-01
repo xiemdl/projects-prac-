@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM</title>
+</head>
+<style>
+    body {
+        background-color: azure;
+        margin: 0%;
+        padding: 0%;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main-container {
+        background-color: burlywood;
+        width: 500px;
+        padding: 20px;
+        border-radius: 10px;
+        border: solid 2px black;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="datetime-local"] {
+        margin-bottom: 15px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="datetime-local"]:focus {
+        border: solid 2px black;
+        background-color: #ccc;
+    }
+
+    input[type="submit"] {
+        padding: 5px;
+        border-radius: 10px;
+        margin-top: 5px;
+
+    }
+
+    input[type="submit"]:hover {
+        background-color: chocolate;
+
+    }
+
+    .gender_sec {
+        margin-bottom: 15px;
+        
+    }
+
+    .gender_sec label {
+        margin-right: 10px;
+    }
+</style>
+
+<body>
+    <div class="main-container">
+        <form action="#" method="post">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="datetime-local" name="datetime" required>
+
+            <div class="gender-section">
+                <label>Gender:</label><br>
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Male</label>
+
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </div>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>

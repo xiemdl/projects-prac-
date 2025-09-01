@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PARALLAX</title>
+    <style>
+        body {
+            display: block;
+            margin: 0%;
+            padding: 0%;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .navbar {
+            background-color: crimson;
+            padding: 50px;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+        }
+
+        .navbar ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 50px;
+        }
+
+        .main-container {
+            width: 100%;
+        }
+
+        .main-container h1 {
+            font-size: 10vw;
+            /* responsive size */
+            color: rgb(255, 0, 0);
+            text-align: center;
+            line-height: 100vh;
+            margin: 0;
+        }
+
+        .container1,
+        .container2,
+        .container3 {
+            height: 100vh;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container1 {
+            background-image: url('../pics/lala.jpg');
+        }
+
+        .container2 {
+            background-image: url(../pics/cats.jpg);
+        }
+
+        .container3 {
+            background-image: url('../pics/lalala.jpg');
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">ABOUT US</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-container">
+        <div class="container1">
+            <h1>I</h1>
+        </div>
+        <div class="container2">
+            <h1>LOVE</h1>
+        </div>
+        <div class="container3">
+            <h1>YOU</h1>
+        </div>
+    </div>
+</body>
+
+</html>
