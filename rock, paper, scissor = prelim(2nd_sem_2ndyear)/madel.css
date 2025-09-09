@@ -1,0 +1,116 @@
+/* Reset */
+body, h1, h2, h3, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Baloo 2', cursive;
+  background-color: #fff;
+  justify-content: center;
+}
+
+
+
+.back {
+  /* background-image: url(./pictures/cc.jpg);
+  background-attachment: fixed;
+  background-size: contain;
+  background-repeat: no-repeat; */
+  background-color: #a786b9;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Title */
+.title {
+  color: #31195c;
+  font-size: 3rem;
+  font-family: 'Pacifico', cursive;
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+    .title {
+        font-size: 4rem;
+    }
+}
+
+.img1,
+.img2 {
+    display: block;
+    margin: 0 auto;
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+}
+
+
+/* Player Info */
+.name, .care, .score, .result {
+    color: #5a396d;
+    font-family: 'Chewy', cursive;
+    text-align: center;
+}
+
+.score {
+  width: 60px;
+  display: inline-block;
+  text-align: center;
+  font-family: monospace; /* Keeps digit widths stable */
+}
+
+/* Play Button Section */
+.play {
+  font-family: 'Chewy', cursive;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+.button {
+    background-color: blueviolet; 
+    color: white;
+      border: solid 2px #4d38c5;
+}
+
+button:hover {
+  background-color: #7153c5;
+  border: solid 2px #5a396d;
+  color: rgb(0, 0, 0);
+  transform: scale(1.05); /* optional: slight zoom */
+  transition: all 0.3s ease; /* smooth hover effect */
+}
+
+
+/* Result Text */
+.result {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+
+  /* Prevent layout shift by fixing height */
+  height: 2em; /* Adjust based on expected message size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Responsive Images on Tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+  .img1, .img2 {
+    width: 60%;
+  }
+}
+
+/* Responsive Images on Mobile */
+@media (max-width: 576px) {
+  .img1, .img2 {
+    width: 70%;
+  }
+}
