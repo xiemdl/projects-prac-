@@ -1,4 +1,4 @@
-//this will be the id attributes from html, where can be easy to access 
+// These are the ID and class selectors used to access elements from the HTML
 const display = document.getElementById("display");
 const numberButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
