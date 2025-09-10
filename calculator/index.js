@@ -1,3 +1,4 @@
+//this will be the id attributes from html, where can be easy to access 
 const display = document.getElementById("display");
 const numberButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
@@ -13,7 +14,7 @@ function updateDisplay(value) {
   display.value = value;
 }
 
-// Handle number button clicks
+// When a number button is clicked, add its value to the current input and show it
 numberButtons.forEach(button => {
   button.addEventListener("click", () => {
     currentInput += button.dataset.num;
@@ -21,7 +22,7 @@ numberButtons.forEach(button => {
   });
 });
 
-// Handle operator button clicks
+// When an operator is clicked, store the current number and the operator, then reset currentInput for the next number
 operatorButtons.forEach(button => {
   button.addEventListener("click", () => {
     if (currentInput === "") return; // Do nothing if no number yet
@@ -35,15 +36,18 @@ operatorButtons.forEach(button => {
 equalsButton.addEventListener("click", () => {
   if (currentInput === "" || previousInput === "" || operator === "") return;
 
+  // Perform the calculation using the previous number, the current number, and the selected operator
   let result = 0;
   const a = parseFloat(previousInput);
   const b = parseFloat(currentInput);
 
+  // Perform the calculation based on the selected operator
   if (operator === "+") result = a + b;
   else if (operator === "-") result = a - b;
   else if (operator === "*") result = a * b;
-  else if (operator === "/") result = b !== 0 ? a / b : "Error";
+  else if (operator === "/") result = b !== 0 ? a / b : "Error"; 
 
+ // Show the result on the display and prepare for the next input
   updateDisplay(result);
   currentInput = result.toString();
   previousInput = "";
