@@ -1,0 +1,133 @@
+body {
+    font-family: 'Pacifico', cursive;
+    background-color: lightpink;
+    padding:50px;
+}
+
+
+h1 {
+    color: rgb(240, 19, 122);
+    text-align: center;
+    padding: 20px;
+    text-shadow: rgb(54, 2, 88) 2px 2px 4px;
+}
+
+
+.main-container{
+    background-color: rgb(228, 181, 243);
+    border: solid 5px rgb(195, 156, 212);
+    border-radius: 10px;
+    box-shadow:  0 0 10px rgb(240, 19, 122);
+    margin: 0 auto;
+    max-width: 1000px;
+    height: fit-content;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+    padding-top:40px;
+}
+.add-task-container{
+    justify-items: center;
+    padding: 20px;
+}
+
+.task-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+ul{
+    width: 100%;
+    list-style-type: none;
+    padding: 20px;
+    border-radius: 10px;
+    border: solid 2px rgb(195, 156, 212);
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#task-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: white;
+  border-radius: 5px;
+  color: rgb(90, 13, 90);
+  font-size: 16px;
+}
+
+/* Make checkboxes consistent size */
+.complete-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Add smooth checkbox interaction */
+.complete-checkbox:focus {
+  outline: none;
+  background-color: rgb(195, 156, 212);
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+
+#task-count {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    
+}
+
+input {
+    width: 100%;
+    height: 15px;
+    font-size: 15px;
+    color: rgb(90, 13, 90);
+    padding: 10px;
+    border: solid 2px rgb(54, 2, 88);
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+}
+
+input:focus {
+    outline: none;
+    border: solid 2px rgb(175, 4, 243);
+    transform: scale(1.1);
+    transition: 0.3s;
+    transition: transform 0.3s ease, border 0.3s ease;
+
+}
+
+button {
+    width: 150px;
+    font-size: 15px;
+    margin-right: 20px;
+    padding: 10px;
+    border: solid 2px rgb(54, 2, 88);
+    border-radius: 10px;
+    background-color: rgb(240, 19, 122);
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(175, 4, 243);
+    border:solid 2px wheat;
+    transform: scale(1.1);
+    transition: 0.3s;
+    transition: transform 0.3s ease, border 0.3s ease;   
+}
+
+
+@media (max-width: 600px) {
+    input {
+        width: 100%;
+    }
+}

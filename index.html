@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  margin: 0;
+  padding-top: 50px;
+}
+
+.container {
+  background: #5a6fe7;
+  padding: 20px;
+  border-radius: 8px;
+  width: 350px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: 2px 2px 4px black;
+}
+
+.input-area {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-area:focus {
+  background-color: #5a6fe7;
+  outline: none;}
+
+#taskInput {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgb(58, 65, 107);
+  color: white;
+}
+
+#addBtn {
+  padding: 8px 12px;
+  border: solid 2px black;
+  background: #0056b3;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#addBtn:hover {
+    background: #fffb00;
+    color: black;
+    border: solid 2px black;
+    transition: ease-in-out 0.3s;
+    transform: scale(1.05);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul li.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+#doneBtn{
+    padding: 5px 10px;
+    border: solid 2px black;
+    background: #28a745;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#doneBtn:hover {
+    background: #ff0000;
+    color: rgb(255, 255, 255);
+    border: solid 2px black;
+    transition: ease-in-out 0.3s;
+    transform: scale(1.05);
+}
+
+</style>
+<body>
+  <div class="container">
+    <h1>My To-Do List</h1>
+    <div class="input-area">
+      <input type="text" id="taskInput" placeholder="Enter a task">
+      <button id="addBtn">Add</button>
+    </div>
+    <ul id="taskList">
+        <li>
+            <span>Task 1</span>
+            <button id="doneBtn">DONE</button>
+        </li>
+    </ul>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+<script>
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+function saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+function createTaskElement(taskText, isCompleted = false) {
+    const li = document.createElement('li');
+    li.textContent = taskText;
+
+    const btn = document.createElement('button');
+    btn.textContent = 'Done';
+    btn.id = 'doneBtn';
+    li.appendChild(btn);
+
+    if (isCompleted) {
+        li.classList.add('completed');
+    }
+
+    return li;
+}
+
+function addTask() {
+    const taskInput = document.getElementById('taskInput');
+    const taskText = taskInput.value.trim();
+
+    if (taskText) {
+        tasks.push({ text: taskText, completed: false });
+        saveTasks();
+
+        const li = createTaskElement(taskText);
+        document.getElementById('taskList').appendChild(li);
+        taskInput.value = '';
+    }
+}
+
+document.getElementById('addBtn').addEventListener('click', addTask);
+
+document.getElementById('taskInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        addTask();
+    }
+});
+
+document.getElementById('taskList').addEventListener('click', function(e) {
+    if (e.target.id === 'doneBtn') {
+        const li = e.target.closest('li');
+        li.classList.toggle('completed');
+
+        const taskText = li.firstChild.textContent;
+        const task = tasks.find(t => t.text === taskText);
+        if (task) {
+            task.completed = !task.completed;
+            saveTasks();
+        }
+    }
+});
+
+function loadTasks() {
+    tasks.forEach(task => {
+        const li = createTaskElement(task.text, task.completed);
+        document.getElementById('taskList').appendChild(li);
+    });
+}
+
+loadTasks();
+
+</script>
+</html>
