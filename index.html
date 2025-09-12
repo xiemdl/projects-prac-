@@ -4,29 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To-Do App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <style>
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
+  font-family: 'Quicksand', sans-serif;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   height: 100vh;
   margin: 0;
   padding-top: 50px;
+  
 }
 
 .container {
-  background: #5a6fe7;
+  border: solid 5px black;
+  background: #3d304e;
   padding: 20px;
   border-radius: 8px;
   width: 350px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow:  0 10px 30px rgb(255, 255, 255);
 }
 
 h1 {
+  font-family: 'Pacifico', cursive;
   text-align: center;
   margin-bottom: 20px;
   color: white;
@@ -55,14 +58,14 @@ h1 {
 #addBtn {
   padding: 8px 12px;
   border: solid 2px black;
-  background: #0056b3;
+  background: #b157bd;
   color: white;
   border-radius: 4px;
   cursor: pointer;
 }
 
 #addBtn:hover {
-    background: #fffb00;
+    background: #ff00bf;
     color: black;
     border: solid 2px black;
     transition: ease-in-out 0.3s;
@@ -75,8 +78,9 @@ ul {
 }
 
 ul li {
-  background: #f9f9f9;
+  background: #ccb4b4;
   padding: 10px;
+  color: rgb(0, 0, 0);
   margin-bottom: 8px;
   border-radius: 4px;
   display: flex;
@@ -84,22 +88,23 @@ ul li {
   align-items: center;
 }
 
+
 ul li.completed {
   text-decoration: line-through;
-  color: gray;
+  color: rgb(172, 83, 24);
 }
 
 #doneBtn{
     padding: 5px 10px;
     border: solid 2px black;
-    background: #28a745;
+    background: #564ec0;
     color: white;
     border-radius: 4px;
     cursor: pointer;
 }
 
 #doneBtn:hover {
-    background: #ff0000;
+    background: #4e0742;
     color: rgb(255, 255, 255);
     border: solid 2px black;
     transition: ease-in-out 0.3s;
@@ -115,17 +120,14 @@ ul li.completed {
       <button id="addBtn">Add</button>
     </div>
     <ul id="taskList">
-        <li>
-            <span>Task 1</span>
-            <button id="doneBtn">DONE</button>
-        </li>
+  
     </ul>
   </div>
   <script src="script.js"></script>
 </body>
 
 <script>
-    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 function saveTasks() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -135,10 +137,15 @@ function createTaskElement(taskText, isCompleted = false) {
     const li = document.createElement('li');
     li.textContent = taskText;
 
-    const btn = document.createElement('button');
-    btn.textContent = 'Done';
-    btn.id = 'doneBtn';
-    li.appendChild(btn);
+    const doneBtn = document.createElement('button');
+    doneBtn.textContent = 'Done';
+    doneBtn.classList.add('done-btn');
+    li.appendChild(doneBtn);
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.classList.add('delete-btn');
+    li.appendChild(deleteBtn);
 
     if (isCompleted) {
         li.classList.add('completed');
@@ -163,23 +170,32 @@ function addTask() {
 
 document.getElementById('addBtn').addEventListener('click', addTask);
 
-document.getElementById('taskInput').addEventListener('keypress', function(e) {
+document.getElementById('taskInput').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
         addTask();
     }
 });
 
-document.getElementById('taskList').addEventListener('click', function(e) {
-    if (e.target.id === 'doneBtn') {
-        const li = e.target.closest('li');
-        li.classList.toggle('completed');
+// ✅ Event Delegation for all buttons (works for dynamic items)
+document.getElementById('taskList').addEventListener('click', function (e) {
+    const li = e.target.closest('li');
+    const taskText = li.firstChild.textContent.trim();
+    const taskIndex = tasks.findIndex(t => t.text === taskText);
 
-        const taskText = li.firstChild.textContent;
-        const task = tasks.find(t => t.text === taskText);
-        if (task) {
-            task.completed = !task.completed;
+    if (e.target.classList.contains('done-btn')) {
+        li.classList.toggle('completed');
+        if (taskIndex > -1) {
+            tasks[taskIndex].completed = !tasks[taskIndex].completed;
             saveTasks();
         }
+    }
+
+    if (e.target.classList.contains('delete-btn')) {
+        if (taskIndex > -1) {
+            tasks.splice(taskIndex, 1);
+            saveTasks();
+        }
+        li.remove(); // remove from DOM
     }
 });
 
@@ -191,6 +207,7 @@ function loadTasks() {
 }
 
 loadTasks();
+
 
 </script>
 </html>
