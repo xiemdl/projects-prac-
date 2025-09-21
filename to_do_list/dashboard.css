@@ -1,4 +1,9 @@
+html, body {
+    overflow-x: hidden;   /* no scrollbars */
+    height: 100%;       /* make sure body fits viewport */
+}
 body {
+    justify-items: center;
     font-family: 'Pacifico', cursive;
     background-color: lightpink;
     padding:50px;
@@ -19,8 +24,9 @@ h1 {
     border-radius: 10px;
     box-shadow:  0 0 10px rgb(240, 19, 122);
     margin: 0 auto;
-    max-width: 1000px;
+    width: 50%;
     height: fit-content;
+    justify-items: center;
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 40px;
@@ -28,7 +34,7 @@ h1 {
 }
 .add-task-container{
     justify-items: center;
-    padding: 20px;
+    padding: 10px;
 }
 
 .task-list-container {
@@ -99,7 +105,7 @@ input {
 input:focus {
     outline: none;
     border: solid 2px rgb(175, 4, 243);
-    transform: scale(1.1);
+    transform: scale(1.02);
     transition: 0.3s;
     transition: transform 0.3s ease, border 0.3s ease;
 
@@ -126,8 +132,35 @@ button:hover {
 }
 
 
-@media (max-width: 600px) {
+@media (min-width: 320px) and (max-width: 642px) {
+    h1 {
+        font-size: 20px;
+    }
+    
+    .main-container {
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
     input {
-        width: 100%;
+        width: 80%;
+    }
+
+    button {
+        display: inline-block; 
+        width: 70px;
+        padding: 5px;
+        font-size: 10px;
+        margin: 5px; /* spacing between buttons */
     }
 }
+
+    
+    @media screen and (max-width:768px){
+        .main-container{
+            width: 80%;
+        }
+    }
