@@ -1,151 +1,122 @@
-html, body {
-    overflow: hidden;   /* no scrollbars */
-    height: 50%;       /* make sure body fits viewport */
-}
-body{
+body {
     font-family: 'Pacifico', cursive;
-    align-content: center;
     display: flex;
     justify-content: center;
     background-color: lightpink;
     padding: 10px 0;
 }
 
-.board{
-    border: 2px solid black;
-    border-radius: 10px;
+.board {
     border: 2px solid wheat;
-    height: 650px;
+    border-radius: 10px;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: thistle;
-    width: 100%;
-    padding: 5px;
+    padding: 15px 0;
 }
 
-input{
-    width: 90%;
-}
-
+/* Display Input */
 #display {
-  width: 90%;
-  height: 35px;
-  font-size: 14px;
-  text-align: right;
-  padding: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  border: 2px solid rgb(32, 7, 92);
-  background-color: white;
-  color: rgb(120, 73, 194);
-  font-family: 'Pacifico', cursive;
-
+    width: 90%;
+    height: 35px;
+    font-size: 14px;
+    text-align: right;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 10px;
+    border: 2px solid rgb(32, 7, 92);
+    background-color: white;
+    color: rgb(120, 73, 194);
+    font-family: 'Pacifico', cursive;
 }
 
-
-
-.operation, .numbers {
+/* Button Layout */
+.operation,
+.numbers {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
+    width: 90%;
 }
 
 .operation {
     margin-bottom: 20px;
 }
+
+/* Buttons */
 button {
     font-family: 'Pacifico', cursive;
     background-color: rosybrown;
-    border: none;
     border-radius: 10px;
-    border:2px solid rgb(255, 255, 255);
-    color:rgb(32, 7, 92);
+    border: 2px solid white;
+    color: rgb(32, 7, 92);
     width: 70px;
     height: 35px;
-    margin: 3px;
-    gap: 10px;
-    transition: all 0.2s ease-in-out;
+    margin: 4px;
     font-size: 12px;
+    transition: all 0.2s ease-in-out;
 }
 
 button:hover {
     background-image: linear-gradient(to right, rgb(128, 101, 163), plum);
     color: white;
-    border: 2px solid rgb(0, 0, 0);
+    border-color: black;
     cursor: pointer;
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
 
+/* ---------- Responsive ---------- */
 
-@media screen and (min-width: 450px) {
-    body {
-        padding: 20px 0;
-    }
+@media (min-width: 450px) {
     .board {
         width: 90%;
     }
-    input {
-        width: 70%;
-    }
+
     button {
         width: 100px;
         height: 50px;
         font-size: 18px;
     }
+
     #display {
         height: 50px;
         font-size: 20px;
     }
 }
 
-
-
-@media screen and (min-width: 768px) {
-    body {
-        padding: 30px 0;
-    }
+@media (min-width: 768px) {
     .board {
         width: 70%;
     }
-    input {
-        width: 60%;
-    }
+
     button {
         font-size: 16px;
-        margin: 8px;
+        margin: 6px;
     }
+
     #display {
         font-size: 18px;
     }
 }
 
-
-
-@media screen and (min-width: 1024px) {
-    body {
-        justify-content: center;
-        padding: 40px 0;
-    }
+@media (min-width: 1024px) {
     .board {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         width: 50%;
     }
-    input {
-        width: 50%;
+
+    #display {
+        width: 80%;
     }
 }
 
-
-
-@media screen and (min-width: 1440px) {
+@media (min-width: 1440px) {
     .board {
         width: 30%;
     }
-    input {
-        width: 40%;
+
+    #display {
+        width: 70%;
     }
 }
