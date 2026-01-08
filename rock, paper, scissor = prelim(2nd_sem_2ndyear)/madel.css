@@ -23,94 +23,99 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center;++
   align-items: center;
 }
 
-/* Title */
-.title {
-  color: #31195c;
-  font-size: 3rem;
-  font-family: 'Pacifico', cursive;
-  text-align: center;
+/* ---------- Force Horizontal Layout ---------- */
+
+/* Prevent Bootstrap from stacking columns */
+.container {
+  max-width: 100%;
 }
 
-@media (min-width: 576px) {
-    .title {
-        font-size: 4rem;
-    }
+.row {
+  flex-wrap: nowrap;
 }
 
-.img1,
-.img2 {
-    display: block;
-    margin: 0 auto;
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
+/* Player sections side-by-side */
+.col-md-5 {
+  flex: 0 0 auto;
+  width: 40%;
+  max-width: 40%;
 }
 
-
-/* Player Info */
-.name, .care, .score, .result {
-    color: #5a396d;
-    font-family: 'Chewy', cursive;
-    text-align: center;
-}
-
-.score {
-  width: 60px;
-  display: inline-block;
-  text-align: center;
-  font-family: monospace; /* Keeps digit widths stable */
-}
-
-/* Play Button Section */
+/* Center content vertically */
+.col-md-5,
 .play {
-  font-family: 'Chewy', cursive;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
-}
-.button {
-    background-color: blueviolet; 
-    color: white;
-      border: solid 2px #4d38c5;
 }
 
-button:hover {
-  background-color: #7153c5;
-  border: solid 2px #5a396d;
-  color: rgb(0, 0, 0);
-  transform: scale(1.05); /* optional: slight zoom */
-  transition: all 0.3s ease; /* smooth hover effect */
+/* ---------- Images ---------- */
+.img1,
+.img2 {
+  width: clamp(180px, 20vw, 320px);
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
 }
 
+/* ---------- Text ---------- */
+.title {
+  font-size: clamp(2rem, 3vw, 3.5rem);
+  font-family: 'Chewy', cursive;
+  color: #5a396d;
+}
 
-/* Result Text */
+.name,
+.care,
+.score,
 .result {
-  font-size: 1.2rem;
-  margin-top: 1rem;
-
-  /* Prevent layout shift by fixing height */
-  height: 2em; /* Adjust based on expected message size */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-family: 'Chewy', cursive;
+  color: #5a396d;
   text-align: center;
 }
 
-/* Responsive Images on Tablets */
-@media (min-width: 577px) and (max-width: 768px) {
-  .img1, .img2 {
-    width: 60%;
-  }
+/* Prevent score shifting */
+.score {
+  width: 4ch;
+  font-family: monospace;
 }
 
-/* Responsive Images on Mobile */
-@media (max-width: 576px) {
-  .img1, .img2 {
-    width: 70%;
+/* ---------- Button ---------- */
+.button {
+  background-color: blueviolet;
+  color: white;
+  border: 2px solid #4d38c5;
+  border-radius: 999px;
+
+  width: clamp(150px, 18vw, 220px);
+  height: clamp(40px, 5vw, 55px);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #7153c5;
+  border-color: #5a396d;
+  color: black;
+  transform: scale(1.05);
+}
+
+/* ---------- Result ---------- */
+.result {
+  min-height: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Disable Mobile Stacking ---------- */
+@media (max-width: 768px) {
+  .row {
+    flex-wrap: nowrap;
+    overflow-x: auto; /* allows horizontal scrolling if needed */
   }
 }
